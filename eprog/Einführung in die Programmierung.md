@@ -446,7 +446,7 @@ public class Inner2 {
 
 ####  *Vererbung* (ereditarietà)
 
-La *keyword* `super` si può utilizzare per chiamare la "classe madre" ad esempio `super.getSalary()` all'interno di `Administrator extends Angestellte` chiama `Angestellte.getSalary()`.
+La *keyword* `super` si può utilizzare per riferirsi alla "classe madre" ad esempio `super.getSalary()` all'interno di `Administrator extends Angestellte` chiama `Angestellte.getSalary()`.
 
 ##### Costruttori
 
@@ -454,7 +454,7 @@ Quando si definisce un costruttore nella *superclass*, bisogna farlo canche per 
 
 Il costruttore della *superclass* si può chiamare attraverso `super(...)`.
 
-I `private` della *superclass* **non** possono essere letti dalla *subclass*! Per accedervi occorre utilizare degli appositi metodi e richiamarli poi con un `super.get...()`.
+I `private` della *superclass* **non** possono essere letti dalla *subclass*! Per accedervi occorre utilizare degli appositi metodi e richiamarli poi con un `super.get...()` (oppure usare `protected`, vedi più sotto).
 
 ##### *Selektiv Verhalten (von Objekten)*
 
@@ -488,7 +488,7 @@ public class FaGe extends Angestellte {
 }
 ```
 
-In this case when calling  through a `FaGe` object `faGe.getVacationDays()`, `getSeniorityBonus()` will return `0`.
+In questo caso chiamando attraverso un oggetto `FaGe`  `faGe.getVacationDays()`, `getSeniorityBonus()` dà `0`.
 
 Questo fenomeno si chiama *dynamische Bindung* (*dynamic binding*).
 
@@ -531,7 +531,7 @@ B x;
 x = b; // Non funziona! Il cast va verso la subclass, pertanto dev'essere esplicito
 x = (B) b; // Corretto
 b = (A) x; // Corretto, ma non necessario esplicitare il cast
-b = x; // corretto
+b = x; // Corretto (implicito)
 
 ```
 
@@ -581,7 +581,7 @@ class R extends S {
 
 Se ad esempio definisco `T r = new R()`, chiamando `r.s2()` ottengo `R`, perché viene utilizzato `s2()` come definito in `S` e `p()` come definito in `R`. **N.B.** che `r.p()` non può essere chiamato perché `p()` non è definito in `T`.
 
-Se i due metodi `p()` diventano `private`,  il risultato sarà **`S` e non `R`**! Questo perché `p()` non è visibile per `S`.
+Se i due metodi `p()` diventano `private`,  il risultato sarà **`S` e non `R`**! Questo perché `p()` di `R` non è visibile per `S`.
 
 Per fare l'*override* di un metodo, tale metodo deve essere uguale o meno restrittivo del metodo nella *superclass*, altrimenti si ottiene un errore.
 
@@ -614,7 +614,7 @@ yref.s; 					// da "in Y"
 yref.myS(); 				// da "in Y"
 yref.myS1(); 				// da "in X"
 ((X) yref).myS(); 			// da "in Y"
-((X) yref).s; 				// da "in X", come definito in X
+((X) yref).s; 				// da "in X"
 
 ```
 
@@ -676,11 +676,11 @@ Un nuovo oggetto di tipo `Integer` può essere creato utilizzando il metodo `val
 
 ##### `compareTo()`
 
-compareTo() permette di confrontare gli oggetti definendo un ordine (order relation, vedi DiskMat). Il valore restituito è minore o maggiore di `0` o `0`  a dipendenza dell'ordine dei due oggetti (o se sono uguali).
+`compareTo()` permette di confrontare gli oggetti definendo un ordine (order relation, vedi DiskMat). Il valore restituito è minore o maggiore di `0` o uguale a `0`  a dipendenza dell'ordine dei due oggetti (o se sono uguali).
 
 <img src="./img/image-20210105181102914.png" alt="image-20210105181102914" style="zoom:67%;" />
 
-Per ordinare una *collection* si può utilizzare il metodo `sort()` della classe `Collections`  ( dove vi sono altri metodi utili per trattare le *collection*). Questo metodo può esser utilizzato sse. è definito il metodo `compareTo()` dell'interfaccia `Comparable` all'interno della classe del tipo di *collection*. In altre parole, una `collection<E>` deve implementare `Comparable`, definendo il rispettivo metodo `compareTo(E other)`. In questo modo sarà possibile usare `Collection.sort()`.
+Per ordinare una *collection* si può utilizzare il metodo `sort()` della classe `Collections`  ( dove vi sono altri metodi utili per trattare le *collection*). Questo metodo può esser utilizzato sse. è definito il metodo `compareTo()` dell'interfaccia `Comparable` all'interno della classe del tipo di *collection*. In altre parole, una `Collection<E>` deve implementare `Comparable`, definendo il rispettivo metodo `compareTo(E other)`. In questo modo sarà possibile usare `Collection.sort()`.
 
 A volte per fare un confronto può essere utile fare una sottrazione fra due valori, ma bisogna fare attenzione nel caso questi siano `double`, in tal caso meglio usare `Math.signum(double)`.
 
@@ -751,8 +751,8 @@ Bisogna verificare che la *postcondition* sia vera independentemente da qual blo
 
 ###### *"Schwächste" Vorbedingung*
 
-- `P1` è *stärker (stronger)* di `P2` $\iff$ `P1` $\implies$ `P2`
-- `P1` è *schwächer (weaker)* di `P2` $\iff$ `P2` $\implies$ `P1`
+- `P1` è *stärker (stronger)* di `P2` $\overset{\text{def.}}{\iff}$ `P1` $\implies$ `P2`
+- `P1` è *schwächer (weaker)* di `P2` $\overset{\text{def.}}{\iff}$`P2` $\implies$ `P1`
 
 Ci interessa avere la *schwächste precondition* (`wp(S1;S2;...,Q)`) e la *stärkeste* postcondition (`s`) in modo da poterle sempre sostituire con qualcosa di *stärker* o *schwächer* rispettivamente.
 
@@ -809,9 +809,9 @@ Ripetere il procedimento più volte
 
 ##### Classi astratte
 
-Usano la *keyword* `abstract`, non possono essere usate per creare esemplari, hanno bisogno di essere implementate in un altra classe.
+Usano la *keyword* `abstract`, non possono essere usate per creare esemplari attraverso la *keyword* `new`, hanno bisogno di essere implementate in un altra classe.
 
-##### equals, == e *boxing*
+##### `equals()`, `==` e *boxing*
 
 Quando si effettua un *boxing* e si vogliono confrontare due valori, è meglio confrontarli con `.equals()`.
 
