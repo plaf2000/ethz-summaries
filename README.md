@@ -2,9 +2,21 @@
 
 ## Instructions for custom css
 
-In order to benefit from the custom css please copy the `base.user.css` file inside the `themes` folder into the `themes` folder from Typora [here](https://support.typora.io/Add-Custom-CSS/#open-theme-folder) are the instruction to find this folder.
+In order to benefit from the custom css you have to:
 
-If you already have that file, add to it the code inside the file.
+1. Create the new file `base.user.css` folder into the `themes` folder from Typora (if not already present). [Here](https://support.typora.io/Add-Custom-CSS/#open-theme-folder) are the instruction to find this folder.
+
+2. Open the file.
+
+3. Type in at the beginning of the file
+
+   ```css
+   @import "<directory_to_the_cloned_project>/summaries/themes/summary.css";
+   ```
+
+   
+
+
 
 
 
