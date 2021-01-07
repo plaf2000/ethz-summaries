@@ -44,13 +44,13 @@ B~1~ and B~2~ sono equivalenti sse:
 | Option                                                       | Wiederholung                                                 | Auswahl                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | `[A]`                                                        | `{A}`                                                        | `A | B | C | D `                                             |
-| ![](./img_eprog/image-20210101190158661.png) | ![image-20210101190441918](./img_eprog/image-20210101190441918.png) | ![image-20210101190430696](./img_eprog/image-20210101190430696.png) |
+| ![](./img/image-20210101190158661.png) | ![image-20210101190441918](./img/image-20210101190441918.png) | ![image-20210101190430696](./img/image-20210101190430696.png) |
 
 #### Recursione in *Ableitungsbaum*
 
 Esempio `r <= b | Ar`:
 
-<img src="./img_eprog/image-20210101191012335.png" alt="image-20210101191012335" style="zoom: 50%;" /> $\implies$ AAB è legale
+<img src="./img/image-20210101191012335.png" alt="image-20210101191012335" style="zoom: 50%;" /> $\implies$ AAB è legale
 
 ### Java
 
@@ -99,7 +99,7 @@ public class PrintExample2 {
 
 #### *Primitive types*
 
-<img src="./img_eprog/image-20210101220945320.png" alt="image-20210101220945320" style="zoom: 55%;" /> 
+<img src="./img/image-20210101220945320.png" alt="image-20210101220945320" style="zoom: 55%;" /> 
 
 **(non da sapere)**
 
@@ -181,13 +181,13 @@ Esempio: `1, 2, 3, 4, 5,`, oppure `,1 ,2 ,3 ,4, 5`
 
 `s.toUppercase` ritorna la stringa in caps-lock, ma non la sostituisce (`s` rimane in minuscolo).
 
-<img src="./img_eprog/image-20210102022426898.png" alt="image-20210102022426898" style="zoom: 67%;" /> 
+<img src="./img/image-20210102022426898.png" alt="image-20210102022426898" style="zoom: 67%;" /> 
 
 #### Classe `Random`
 
 `java.util.Random`:
 
-<img src="./img_eprog/image-20210102022702662.png" alt="image-20210102022702662" style="zoom:67%;" /> 
+<img src="./img/image-20210102022702662.png" alt="image-20210102022702662" style="zoom:67%;" /> 
 
 #### *Scope (Sichtbarkeitsbereich)* = "zona" di visibilità delle variabili
 
@@ -318,7 +318,7 @@ Le variabili `static` devono anche essere o `private` o `final`.
 
 La classe `File` (`java.io.File`) permette di operare sui file. Ecco una lista di metodi:
 
-<img src="./img_eprog/image-20210103144400858.png" alt="image-20210103144400858" style="zoom: 50%;" /> 
+<img src="./img/image-20210103144400858.png" alt="image-20210103144400858" style="zoom: 50%;" /> 
 
 Per leggere il contenuto di un file di testo si può dare l'oggetto nel parametro di costruzione dello scanner:
 
@@ -399,7 +399,7 @@ output.print("Hello world!");
 - l'***heap*** contiente gli oggetti che vengono creati attraverso l'operatore `new`
 - lo ***stack*** contiene le variabili utilizzate nei metodi (ad esempio anche i parametri)
 
-<img src="./img_eprog/image-20210103180925118.png" alt="image-20210103180925118" style="zoom:67%;" /> Lo *stack* cresce verso l'alto, mentre l'*heap* verso il basso.
+<img src="./img/image-20210103180925118.png" alt="image-20210103180925118" style="zoom:67%;" /> Lo *stack* cresce verso l'alto, mentre l'*heap* verso il basso.
 
 ##### Esempio
 
@@ -413,7 +413,7 @@ public void run() {
 }
 ```
 
-<img src="./img_eprog/image-20210103200624815.png" alt="image-20210103200624815" style="zoom: 80%;" /> 
+<img src="./img/image-20210103200624815.png" alt="image-20210103200624815" style="zoom: 80%;" /> 
 
 Se ci sono troppe variabili/oggetti, lo stack e l'heap rischiano di sovrascriversi. Java restituisce in questo caso un errore (`StackOverflowError`, spesso avviene quando ci sono troppe ricorsioni).
 
@@ -510,7 +510,7 @@ Questo attributo permette di alle *subclass* di accedere alle variabili della  *
 
 ##### Gerarchia negli errori
 
-<img src="./img_eprog/image-20210104024433148.png" alt="image-20210104024433148" style="zoom: 50%;" />
+<img src="./img/image-20210104024433148.png" alt="image-20210104024433148" style="zoom: 50%;" />
 
 ##### La classe `Object`
 
@@ -690,7 +690,7 @@ Un nuovo oggetto di tipo `Integer` può essere creato utilizzando il metodo `val
 
 `compareTo()` permette di confrontare gli oggetti definendo un ordine (order relation, vedi DiskMat). Il valore restituito è minore o maggiore di `0` o uguale a `0`  a dipendenza dell'ordine dei due oggetti (o se sono uguali).
 
-<img src="./img_eprog/image-20210105181102914.png" alt="image-20210105181102914" style="zoom:67%;" />
+<img src="./img/image-20210105181102914.png" alt="image-20210105181102914" style="zoom:67%;" />
 
 Per ordinare una *collection* si può utilizzare il metodo `sort()` della classe `Collections`  ( dove vi sono altri metodi utili per trattare le *collection*). Questo metodo può esser utilizzato sse. è definito il metodo `compareTo()` dell'interfaccia `Comparable` all'interno della classe del tipo di *collection*. In altre parole, una `Collection<E>` deve implementare `Comparable`, definendo il rispettivo metodo `compareTo(E other)`. In questo modo sarà possibile usare `Collection.sort()`.
 
@@ -702,7 +702,7 @@ A volte per fare un confronto può essere utile fare una sottrazione fra due val
 
 Tre importanti interfacce principali: `List`, `Map` e `Set`.
 
-<img src="./img_eprog/image-20210105210454110.png" alt="image-20210105210454110" style="zoom:67%;" />
+<img src="./img/image-20210105210454110.png" alt="image-20210105210454110" style="zoom:67%;" />
 
 Vantaggi e svantaggi fra le diverse implementazioni
 
@@ -716,7 +716,7 @@ Vantaggi e svantaggi fra le diverse implementazioni
 
 Con un ciclo *foreach*, ad esempio della forma `for(E e : set){}` è *read-only*, quindi non consente di eliminare gli elementi nel set. Per ovviare a questo problema si usano gli iteratori. l'interfaccia `Iterator` prevede tre metodi:
 
-<img src="./img_eprog/image-20210106001624228.png" alt="image-20210106001624228" style="zoom: 67%;" />
+<img src="./img/image-20210106001624228.png" alt="image-20210106001624228" style="zoom: 67%;" />
 
 Eccco un esempio di un suo utilizzo:
 
