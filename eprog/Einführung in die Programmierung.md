@@ -44,13 +44,13 @@ B~1~ and B~2~ sono equivalenti sse:
 | Option                                                       | Wiederholung                                                 | Auswahl                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | `[A]`                                                        | `{A}`                                                        | `A | B | C | D `                                             |
-| ![](./img/image-20210101190158661.png) | ![image-20210101190441918](./img/image-20210101190441918.png) | ![image-20210101190430696](./img/image-20210101190430696.png) |
+| ![](./img_eprog/image-20210101190158661.png) | ![image-20210101190441918](./img_eprog/image-20210101190441918.png) | ![image-20210101190430696](./img_eprog/image-20210101190430696.png) |
 
 #### Recursione in *Ableitungsbaum*
 
 Esempio `r <= b | Ar`:
 
-<img src="./img/image-20210101191012335.png" alt="image-20210101191012335" style="zoom: 50%;" /> $\implies$ AAB è legale
+<img src="./img_eprog/image-20210101191012335.png" alt="image-20210101191012335" style="zoom: 50%;" /> $\implies$ AAB è legale
 
 ### Java
 
@@ -72,14 +72,11 @@ continue	goto		package			synchronized
 ####  Caratteri speciali
 
 - `\t` tabulazione
-
 - `\n` nuova riga
-
 - `\"` doppie virgolette
-
 - `\\` backslash
 
-  **N.B.:** Lo slash normale (`/`) non dà problemi.
+<img class="att"/> Lo slash normale (`/`) non dà problemi.
 
 #### Metodi
 
@@ -102,7 +99,7 @@ public class PrintExample2 {
 
 #### *Primitive types*
 
-<img src="./img/image-20210101220945320.png" alt="image-20210101220945320" style="zoom:67%;" /> 
+<img src="./img_eprog/image-20210101220945320.png" alt="image-20210101220945320" style="zoom: 55%;" /> 
 
 **(non da sapere)**
 
@@ -121,13 +118,13 @@ public class PrintExample2 {
 
 ####  Operazioni
 
-**Attenzione al modulo!** Alcuni casi particolari:
+<img class="att"/>  **Attenzione al modulo!** Alcuni casi particolari:
 
 ```java
 -1%2; // fa -1, non 1!!
 1%7; // fa 1
 230857%10; // fa 7, in generale, %10^n è utile per ottenere le ultime n cifre di un numero.
-230857%2; // fa 0, in generale, %2 è utile per vedere se un numero è pari.
+230857%2; // fa 1, in generale, %2 è utile per vedere se un numero è pari (0 pari, 1 dispari).
 2.5%1.5; // fa 1.0 (double)! % è definito anche per i double!
 ```
 
@@ -143,9 +140,24 @@ Scanner name = new Scanner(System.in);
 
 #### Incremento e decremento
 
-<img src="./img/image-20210102012000120.png" alt="image-20210102012000120" style="zoom:50%;" /> Post-Inc/Decrement
+##### Post-Inc/Decrement
 
-Pre-Inc/Decrement
+```java
+int x=2;
+int y;
+y=x++; //*
+```
+
+Succede che:
+
+```java
+//*: 
+int temp = x;
+x=x+1;
+y=temp; 
+```
+
+##### Pre-Inc/Decrement
 
 ```java
 int x=2;
@@ -169,13 +181,13 @@ Esempio: `1, 2, 3, 4, 5,`, oppure `,1 ,2 ,3 ,4, 5`
 
 `s.toUppercase` ritorna la stringa in caps-lock, ma non la sostituisce (`s` rimane in minuscolo).
 
-<img src="./img/image-20210102022426898.png" alt="image-20210102022426898" style="zoom: 67%;" /> 
+<img src="./img_eprog/image-20210102022426898.png" alt="image-20210102022426898" style="zoom: 67%;" /> 
 
 #### Classe `Random`
 
 `java.util.Random`:
 
-<img src="./img/image-20210102022702662.png" alt="image-20210102022702662" style="zoom:67%;" /> 
+<img src="./img_eprog/image-20210102022702662.png" alt="image-20210102022702662" style="zoom:67%;" /> 
 
 #### *Scope (Sichtbarkeitsbereich)* = "zona" di visibilità delle variabili
 
@@ -197,7 +209,7 @@ int i = 5; // OK: outside of loop's scope
 
 `new int[number]` viene inizializzato a `0`, `new String[number]` (e in generale tutti gli oggetti) a `null`.
 
-Per confrontare due array sia `.equals()` , che `==` non possono essere utilizzati. In compenso si utilizza `Arrays.equals(a1,a2)` della classe `java.util.Arrays`!
+<img class="att"/> Per confrontare due array sia `.equals()` , che `==` non possono essere utilizzati. In compenso si utilizza `Arrays.equals(a1,a2)` della classe `java.util.Arrays`!
 
 `Arrays.toString(a)` converte l'array `a` in una stringa.
 
@@ -235,7 +247,7 @@ public static void changeMyArray(int[] input, int number) {
 
 #### Classi e oggetti
 
-Per confrontare due oggetti si usa `.equals()` e non `==` !!
+<img class="att"/> Per confrontare due oggetti si usa `.equals()` e non `==` !
 
 Le variabili si riferiscono agli oggetti, pertanto sono delle *Referenzvariable* (*reference variable*), vedi sopra.
 
@@ -267,7 +279,7 @@ class Foo {
 }
 ```
 
-**N.B.: **le variabili vanno dichiarate all'esterno del costruttore, altrimenti sono visibili solo all'interno di esso.
+<img class="att"/>  Le variabili vanno dichiarate all'esterno del costruttore, altrimenti sono visibili solo all'interno di esso.
 
 ##### `this`
 
@@ -306,7 +318,7 @@ Le variabili `static` devono anche essere o `private` o `final`.
 
 La classe `File` (`java.io.File`) permette di operare sui file. Ecco una lista di metodi:
 
-<img src="./img/image-20210103144400858.png" alt="image-20210103144400858" style="zoom: 50%;" /> 
+<img src="./img_eprog/image-20210103144400858.png" alt="image-20210103144400858" style="zoom: 50%;" /> 
 
 Per leggere il contenuto di un file di testo si può dare l'oggetto nel parametro di costruzione dello scanner:
 
@@ -360,7 +372,7 @@ PrintStream output = new PrintStream(file);
 output.print("Hello world!");
 ```
 
-**N.B: ** 
+<img class="att"/> 
 
 1.  Se il file esiste, viene sovrascritto.
 
@@ -387,7 +399,7 @@ output.print("Hello world!");
 - l'***heap*** contiente gli oggetti che vengono creati attraverso l'operatore `new`
 - lo ***stack*** contiene le variabili utilizzate nei metodi (ad esempio anche i parametri)
 
-<img src="./img/image-20210103180925118.png" alt="image-20210103180925118" style="zoom:67%;" /> Lo *stack* cresce verso l'alto, mentre l'*heap* verso il basso.
+<img src="./img_eprog/image-20210103180925118.png" alt="image-20210103180925118" style="zoom:67%;" /> Lo *stack* cresce verso l'alto, mentre l'*heap* verso il basso.
 
 ##### Esempio
 
@@ -401,7 +413,7 @@ public void run() {
 }
 ```
 
-<img src="./img/image-20210103200624815.png" alt="image-20210103200624815" style="zoom: 80%;" /> 
+<img src="./img_eprog/image-20210103200624815.png" alt="image-20210103200624815" style="zoom: 80%;" /> 
 
 Se ci sono troppe variabili/oggetti, lo stack e l'heap rischiano di sovrascriversi. Java restituisce in questo caso un errore (`StackOverflowError`, spesso avviene quando ci sono troppe ricorsioni).
 
@@ -454,7 +466,7 @@ Quando si definisce un costruttore nella *superclass*, bisogna farlo canche per 
 
 Il costruttore della *superclass* si può chiamare attraverso `super(...)`.
 
-I `private` della *superclass* **non** possono essere letti dalla *subclass*! Per accedervi occorre utilizare degli appositi metodi e richiamarli poi con un `super.get...()` (oppure usare `protected`, vedi più sotto).
+<img class="att"/> I `private` della *superclass* **non** possono essere letti dalla *subclass*! Per accedervi occorre utilizare degli appositi metodi e richiamarli poi con un `super.get...()` (oppure usare `protected`, vedi più sotto).
 
 ##### *Selektiv Verhalten (von Objekten)*
 
@@ -498,7 +510,7 @@ Questo attributo permette di alle *subclass* di accedere alle variabili della  *
 
 ##### Gerarchia negli errori
 
-<img src="./img/image-20210104024433148.png" alt="image-20210104024433148" style="zoom: 50%;" />
+<img src="./img_eprog/image-20210104024433148.png" alt="image-20210104024433148" style="zoom: 50%;" />
 
 ##### La classe `Object`
 
@@ -581,7 +593,7 @@ class R extends S {
 
 Se ad esempio definisco `T r = new R()`, chiamando `r.s2()` ottengo `R`, perché viene utilizzato `s2()` come definito in `S` e `p()` come definito in `R`. **N.B.** che `r.p()` non può essere chiamato perché `p()` non è definito in `T`.
 
-Se i due metodi `p()` diventano `private`,  il risultato sarà **`S` e non `R`**! Questo perché `p()` di `R` non è visibile per `S`.
+<img class="att"/> Se i due metodi `p()` diventano `private`,  il risultato sarà **`S` e non `R`**! Questo perché `p()` di `R` non è visibile per `S`.
 
 Per fare l'*override* di un metodo, tale metodo deve essere uguale o meno restrittivo del metodo nella *superclass*, altrimenti si ottiene un errore.
 
@@ -678,7 +690,7 @@ Un nuovo oggetto di tipo `Integer` può essere creato utilizzando il metodo `val
 
 `compareTo()` permette di confrontare gli oggetti definendo un ordine (order relation, vedi DiskMat). Il valore restituito è minore o maggiore di `0` o uguale a `0`  a dipendenza dell'ordine dei due oggetti (o se sono uguali).
 
-<img src="./img/image-20210105181102914.png" alt="image-20210105181102914" style="zoom:67%;" />
+<img src="./img_eprog/image-20210105181102914.png" alt="image-20210105181102914" style="zoom:67%;" />
 
 Per ordinare una *collection* si può utilizzare il metodo `sort()` della classe `Collections`  ( dove vi sono altri metodi utili per trattare le *collection*). Questo metodo può esser utilizzato sse. è definito il metodo `compareTo()` dell'interfaccia `Comparable` all'interno della classe del tipo di *collection*. In altre parole, una `Collection<E>` deve implementare `Comparable`, definendo il rispettivo metodo `compareTo(E other)`. In questo modo sarà possibile usare `Collection.sort()`.
 
@@ -690,7 +702,7 @@ A volte per fare un confronto può essere utile fare una sottrazione fra due val
 
 Tre importanti interfacce principali: `List`, `Map` e `Set`.
 
-<img src="./img/image-20210105210454110.png" alt="image-20210105210454110" style="zoom:67%;" />
+<img src="./img_eprog/image-20210105210454110.png" alt="image-20210105210454110" style="zoom:67%;" />
 
 Vantaggi e svantaggi fra le diverse implementazioni
 
@@ -704,7 +716,7 @@ Vantaggi e svantaggi fra le diverse implementazioni
 
 Con un ciclo *foreach*, ad esempio della forma `for(E e : set){}` è *read-only*, quindi non consente di eliminare gli elementi nel set. Per ovviare a questo problema si usano gli iteratori. l'interfaccia `Iterator` prevede tre metodi:
 
-<img src="./img/image-20210106001624228.png" alt="image-20210106001624228" style="zoom: 67%;" />
+<img src="./img_eprog/image-20210106001624228.png" alt="image-20210106001624228" style="zoom: 67%;" />
 
 Eccco un esempio di un suo utilizzo:
 
@@ -762,7 +774,7 @@ Per trovare `wp(S1;S2;...,Q)` ci basta partire da `Q` e andare a ritroso verso `
 
 
 
-**Attenzione** alle variabili con lo stesso nome che si scambiano!
+<img class="att"/>  **Attenzione** alle variabili con lo stesso nome che si scambiano!
 
 
 
@@ -813,5 +825,7 @@ Usano la *keyword* `abstract`, non possono essere usate per creare esemplari att
 
 ##### `equals()`, `==` e *boxing*
 
-Quando si effettua un *boxing* e si vogliono confrontare due valori, è meglio confrontarli con `.equals()`.
+<img class="att"/>  Quando si effettua un *boxing* e si vogliono confrontare due valori, è meglio confrontarli con `.equals()`.
+
+
 
