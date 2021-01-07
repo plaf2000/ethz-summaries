@@ -1,0 +1,23 @@
+hr.dashed {
+    height:0;
+    padding: 0;
+    margin: 16px 0;
+    background : none;
+    border: 1px dashed #e7e7e7;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+table td {
+    vertical-align: top;
+}
+
+tr td:first-child {
+    vertical-align: middle;
+}
+
+img.att {
+    content: url("https://upload.wikimedia.org/wikipedia/commons/f/f0/Achtung.png");
+    height:1.5em;
+}
+

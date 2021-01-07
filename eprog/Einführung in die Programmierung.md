@@ -372,7 +372,9 @@ PrintStream output = new PrintStream(file);
 output.print("Hello world!");
 ```
 
-<img class="att"/> 
+<div class="att"><img></div>
+
+ **Attenzione:**
 
 1.  Se il file esiste, viene sovrascritto.
 
@@ -413,7 +415,7 @@ public void run() {
 }
 ```
 
-<img src="./img/image-20210103200624815.png" alt="image-20210103200624815" style="zoom: 80%;" /> 
+<img src="./img/image-20210103200624815.png" alt="image-20210103200624815" style="zoom: 80%;" />
 
 Se ci sono troppe variabili/oggetti, lo stack e l'heap rischiano di sovrascriversi. Java restituisce in questo caso un errore (`StackOverflowError`, spesso avviene quando ci sono troppe ricorsioni).
 
@@ -826,6 +828,4 @@ Usano la *keyword* `abstract`, non possono essere usate per creare esemplari att
 ##### `equals()`, `==` e *boxing*
 
 <img class="att"/>  Quando si effettua un *boxing* e si vogliono confrontare due valori, è meglio confrontarli con `.equals()`.
-
-
 
