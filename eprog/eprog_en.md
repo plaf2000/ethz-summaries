@@ -30,8 +30,8 @@ For every level:
 
 There are two options
 
-- optione 1: frame them
-- optione 2: put between single quotes $\rightarrow$ "" to use the single quotes as a special character
+- option 1: frame them
+- option 2: put between single quotes $\rightarrow$ "" to use the single quotes as a special character
 
 #### Equivalenza fra due regole
 
@@ -40,7 +40,7 @@ B~1~ and B~2~ are equivalent iff.:
 -  legal for B~1~ $\iff$ legal for B~2~
 -  illegal for B~1~ $\iff$ illegal for B~2~
 
-#### Graphic rapresentation
+#### Graphic representation
 
 | Option                                                       | Wiederholung                                                 | Auswahl                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -77,7 +77,7 @@ continue	goto		package			synchronized
 - `\"` double quotes
 - `\\` backslash
 
-<img class="att"/> The forwardslash  (`/`)  is not a special character, `"\/"` gives error.
+<img class="att"/> The forward slash  (`/`)  is not a special character, `"\/"` gives error.
 
 #### *Primitive types*
 
@@ -94,7 +94,7 @@ Seen in class:
 
 ####  Operations
 
-<img class="att"/>  **Be careful with modulo!** Some special cases:
+<img class="att"/>  **Be careful with module!** Some special cases:
 
 ```java
 -1%2; // gives -1, not 1!!
@@ -159,7 +159,7 @@ Example: `1, 2, 3, 4, 5,`, or `,1 ,2 ,3 ,4, 5`
 
 <img src="./img/image-20210102022426898.png" alt="image-20210102022426898" style="zoom: 67%;" /> 
 
-#### Classe `Random`
+#### Class `Random`
 
 `java.util.Random`:
 
@@ -189,11 +189,11 @@ int i = 5; // OK: outside of loop's scope
 
 `Arrays.toString(a)` converts the array `a` into a string.
 
-It is also possible to create an array with 0 dimentions: ` int[] a = new int[0]`.
+It is also possible to create an array with 0 dimensions: ` int[] a = new int[0]`.
 
 #### Value Semantics vs. Reference Semantics
 
-The variable name is only used to access an object, and it is not the object itself. For example:
+An object variable (like array's variable) is only used to access to an object, and it is not the object itself (*reference semantics*), unlike primitive type variables (*value semantics*). For example:
 
 ```java
 int[] myArray = new int[] {0,1,2};
@@ -205,7 +205,7 @@ myArray[1]=18;
 // myArrayCopy and myArray are {0,18,2}
 ```
 
-Furthermore, the changes that happens in another method remains visible even after the method gets called, unlike normal variables. For example:
+Furthermore, the changes that happens in another method remains visible even after the method gets called, unlike primitive type variables. For example:
 
 ```java
 public static void main(String[] args) {
@@ -221,11 +221,11 @@ public static void changeMyArray(int[] input, int number) {
 }
 ```
 
-#### Classi and objects
+#### Classes and objects
 
 <img class="att"/> To compare two objects you have to use `.equals()` and not `==` !
 
-`null` is used to delete the reference of a variavle to an object (any object, as strings, arrays too).
+`null` is used to delete the reference of a variable to an object (any object, as strings, arrays too).
 
 ##### Clients
 
@@ -257,7 +257,7 @@ class Foo {
 
 ##### `this`
 
-`this` can be used in order to avoid the il *shadowing* (*Verdecken von Variablen*) (when an object variable has the same name as a parameter), as well as to call the constructor, by using  `this()`. This can be useful to recycle a constructor in a different variant without parameters, avoiding redundancy. For example:
+`this` can be used in order to avoid the *shadowing* (*Verdecken von Variablen*) (when an object variable has the same name as a parameter), as well as to call the constructor, by using  `this()`. This can be useful to recycle a constructor in a different variant without parameters, avoiding redundancy. For example:
 
 ```java
 public class Point {
@@ -294,7 +294,7 @@ The `File` (`java.io.File`) class allows to operate on files. Here's a list of m
 
 <img src="./img/image-20210103144400858.png" alt="image-20210103144400858" style="zoom: 50%;" /> 
 
-Per leggere il contenuto di un file di testo si può dare l'oggetto nel parametro di costruzione dello scanner:
+To read the content of a text file you can put the file object as parameter when creating a scanner:
 
 ```java
 import java.io.*; // für File
@@ -307,19 +307,19 @@ int zahl = scanner.nextInt();
 
 #### *Exception*s
 
-The exceptions can be "caught" (by `catch`, see below), in order to define how to define how the program should react when these exceptions happend.
+The exceptions can be "caught" (by `catch`, see below), in order to define how to define how the program should react when these exceptions happen.
 
-Some exceptions must be "caught" from the program, because the Java system is not able to handle them correctly. Other excpetions are recognized by the system (for example division by 0, `null` pointer,...).
+Some exceptions must be "caught" from the program, because the Java system is not able to handle them correctly. Other exceptions are recognized by the system (for example division by 0, `null` pointer,...).
 
-The exceptions that are recognized and handled by the systme are called ***checked Exception***, the others are ***unchecked Exception***.
+The exceptions that are recognized and handled by the system are called ***checked Exception***, the others are ***unchecked Exception***.
 
-It is possible to declare that an exception can happend inside a method, by *keyword* `throws`  after declaring the method:
+It is possible to declare that an exception can happen inside a method, by *keyword* `throws`  after declaring the method:
 
 ```java
 public static void foo(...) throws type
 ```
 
-#### Input/Ouput
+#### Input/Output
 
 `Scanner` has two exceptions: `NoSuchElementException` e `InputMismatchException`.
 
@@ -336,7 +336,7 @@ Scanner scan = new Scanner(text);
 
 It is in`java.io`.
 
-It has methods similar to `System.out`, but it writes in a file insted. Here's an example:
+It has methods similar to `System.out`, but it writes in a file instead. Here's an example:
 
 ```java
 import java.io.*;
@@ -442,9 +442,9 @@ The superclass constructor, can be called using `super(...)`.
 
 <img class="att"/> `private` from *superclasses* **can't** be read from the *subclasses*! In order to access them, you have to use an accessor and access to them with `super.get...()` (or use the `protected` attribute instead, discussed later).
 
-##### *Selektiv Verhalten (von Objekten)*
+##### Selective (object) behavior *(Selektiv Verhalten von Objekten)*
 
-the *override* can be used to change the behaviour of a method that is used inside another method of the sublass. For eample:
+the *override* can be used to change the behavior of a method that is used inside another method of the subclass. For example:
 
 ```java
 public class Angestellte {
@@ -476,7 +476,7 @@ public class FaGe extends Angestellte {
 
 In this case calling  `faGe.getVacationDays()` with a `FaGe` object, `getSeniorityBonus()` returns `0`.
 
-This phenomenom is called *dynamic binding* (*dynamische Bindung*).
+This phenomenon is called *dynamic binding* (*dynamische Bindung*).
 
 ##### The `protected`  attribute
 
@@ -531,7 +531,7 @@ If you insert the  `public` keyword before `class`, the class must be in a file 
 
 ##### Dynamic binding (*dynamische Bindung* )
 
-If you define a refernce variable like `SuperClass variable = new SubClass()`, you can access to every method defined in the *superclass*, but they get executed as defined inside the subclass. This doesn't happend if the methods are `private`. For example:
+If you define a reference variable like `SuperClass variable = new SubClass()`, you can access to every method defined in the *superclass*, but they get executed as defined inside the subclass. This doesn't happen if the methods are `private`. For example:
 
 ```java
 class T {
@@ -573,7 +573,7 @@ To override a method, the new method must be equal or less restrictive (in terms
 
 ##### *Shadowing*
 
-Unlike methods, variables sometimes don't get overridden. Normally a method takes the variables as defined inside the class. The use of variables with same names inside sublasses is discouraged. Here's an example:
+Unlike methods, variables sometimes don't get overridden. Normally a method takes the variables as defined inside the class. The use of variables with same names inside subclasses is discouraged. Here's an example:
 
 ```java
 class X {
@@ -608,15 +608,15 @@ yref.myS1(); 				// da "in X"
 
 The problem about inheritance (`extends`) is that each subclass can have at most one superclass.
 
-We use *interfaces* to solve this problem. Unlike inheritance, they represent similar behaviours between classes (same methods).
+We use *interfaces* to solve this problem. Unlike inheritance, they represent similar behaviors between classes (same methods).
 
 <img class="att"> When a method gets implemented, it **must** be with **public** visibility!
 
 If a class doesn't implement every method declared in the interface, Java will raise an error. But if you want to implement just some methods, than you can define the class as `abstract` (`public abstract class ...`).
 
-When you use the `abstract` keyword, you can't create new object using the keyword `new`, the abstrac class must be implemented in another class.
+When you use the `abstract` keyword, you can't create new object using the keyword `new`, the abstract class must be implemented in another class.
 
-It is also possible to extend inferfaces with other interfaces (inherit interfaces).
+It is also possible to extend interfaces with other interfaces (inherit interfaces).
 
 ##### *Overloading*
 
@@ -652,13 +652,13 @@ c.foo(x); //foo 0 B!! Since foo() in C takes a Y variable as parameter, it can't
 
 #### *Exceptions*
 
-<img class="att"> **Pay attention** to the `catch` blocks' order.. The one about the more restrictive excpetion must come before and the less restrictive at the end.
+<img class="att"> **Pay attention** to the `catch` blocks' order.. The one about the more restrictive exception must come before and the less restrictive at the end.
 
 ##### Generic programming (*Generische Programmierung*)
 
 For each primitive type there's a corresponding class called *wrapper class* (*Wrapper Klasse*), which can be obtain by writing the first letter uppercase (but **`Character`** for `char` and **`Integer`** for `int`!).
 
-The change from a primitive type to the corrisponding wrapper it's automatic and it is called *boxing*.
+The change from a primitive type to the corresponding wrapper it's automatic and it is called *boxing*.
 
 A new object of `Integer`  type can be crated using the method  `valueOf(int number)`, for example `Integer i = Integer.valueOf(5)` creates an `Integer i`  of value `5`. It is possible to get the value of an object `Integer` by using the methods `intValue()`  or `doubleValue()`.
 
@@ -666,7 +666,7 @@ A new object of `Integer`  type can be crated using the method  `valueOf(int num
 
 ##### `compareTo()`
 
-`compareTo()` can be use to compare two objects by defining an order relation (as seen in DiskMat). The return value is less or greather then `0` or equal to `0`  depending on the order of the two bjects (or if they are the same in the order).
+`compareTo()` can be use to compare two objects by defining an order relation (as seen in DiskMat). The return value is less or greater then `0` or equal to `0`  depending on the order of the two objects (or if they are the same in the order).
 
 <img src="./img/image-20210105181102914.png" alt="image-20210105181102914" style="zoom:67%;" />
 
@@ -674,11 +674,11 @@ To order a *collection* you can use the method `sort()` from the  `Collections` 
 
 Sometime when implementing the `compareTo()` method it is useful make a subtraction between the two values, but you have to be careful when working with`double` types variables, in this case it is better to use`Math.signum(double)`.
 
-`compareTo()` is consistent (*konsistent*) if $\forall$ `a`, `b`: `((a.compareTo(b)==0)==(b.compareTo(a)==0))`. It is recommented to have it consistent.
+`compareTo()` is consistent (*konsistent*) if $\forall$ `a`, `b`: `((a.compareTo(b)==0)==(b.compareTo(a)==0))`. It is recommended to have it consistent.
 
 ##### `Collections` framework 
 
-Three main important interfacesi: `List`, `Map` and `Set`.
+Three main important interfaces: `List`, `Map` and `Set`.
 
 <img src="./img/image-20210105210454110.png" alt="image-20210105210454110" style="zoom:67%;" />
 
@@ -687,7 +687,7 @@ Pros and cons between the different implementation:
 | ADT    | Implementation                                               | Order                                                        | Pros                                                         | Cons                                                         |
 | ------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | `List` | `ArrayList`  <br /><br /><br /><br /><hr />`LinkedList`      | as inserted<br /><br /><br /><br /><hr /> as inserted        | Accessing an element (`get()`, `set()`, ...) requires $\mathcal{O}(1)$ <br /><hr>Adding an element at the beginning of the list is in $\mathcal{O}(1)$ | Adding an element at the beginning of the list is in $\mathcal{O}(n)$<br /><hr>Accessing an element (`get()`, `set()`, ...) requires $\mathcal{O}(n)$ |
-| `Set`  | `TreeSet`<br /><br /><br /><hr />`HashSet`<br /><br /><br /><hr class="dashed">`LinkedHashSet` (`extends HashSet`) | ascending (with `CompareTo()`)<br /><hr />not defined<br /><br /><br /><hr class="dashed"> as inserted | Extracting min(/max) requires $\mathcal{O}(1)$ <br /><hr />Almost all opertions are in $\mathcal{O}(1)$ <hr class="dashed"> Like `HashSet` (almost) and elements ordered | Searching an elment requires $\mathcal{O}(\log n)$ <hr> The elements don't have a defined order<hr class="dashed"> A bit less efficient than `HashSet` |
+| `Set`  | `TreeSet`<br /><br /><br /><hr />`HashSet`<br /><br /><br /><hr class="dashed">`LinkedHashSet` (`extends HashSet`) | ascending (with `CompareTo()`)<br /><hr />not defined<br /><br /><br /><hr class="dashed"> as inserted | Extracting min(/max) requires $\mathcal{O}(1)$ <br /><hr />Almost all  operations are in $\mathcal{O}(1)$ <hr class="dashed"> Like `HashSet` (almost) and elements ordered | Searching an element requires $\mathcal{O}(\log n)$ <hr> The elements don't have a defined order<hr class="dashed"> A bit less efficient than `HashSet` |
 | `Map`  | `TreeMap` <hr> `HashMap`<hr class="dashed">`LinkedHashMap`   | See above                                                    | See above                                                    | See above                                                    |
 
 ##### `Iterator`
@@ -714,15 +714,15 @@ System.out.println(scores); // [72, 87, 94]
 
 #### Systematic programming
 
-You write a *postcondition*  iff. you're sure that the program can reach that point (if there aren't any exceptons before).
+You write a *postcondition*  iff. you're sure that the program can reach that point (if there aren't any exceptions before).
 
 ##### *Hoare triple* (*Hoare Tripel*)
 
-A *Hoare Tripel* is made of a *precondition* `P`, a*statement* (*Anweisung[en]*) `S`, and a *postcondition* `Q`: `{P} S {Q}`. The triple is valid iff.: `P` is valid before the execution of `S` $\implies$ `Q` is valid after the execution of `S`.
+A *hoare triple* is made of a *precondition* `P`, a *statement* (*Anweisung[en]*) `S`, and a *postcondition* `Q`: `{P} S {Q}`. The triple is valid iff.: `P` is valid before the execution of `S` $\implies$ `Q` is valid after the execution of `S`.
 
 ###### Assignment (*Zuweisung*)
 
-To verify the validity of a postcondition with an assignment in `S` you can define a `Q'` by substituting variables in `Q` with their respective definition in `S`. Thean you have to verify that `P` $\implies$ `Q'`.
+To verify the validity of a postcondition with an assignment in `S` you can define a `Q'` by substituting variables in `Q` with their respective definition in `S`. Then you have to verify that `P` $\implies$ `Q'`.
 
 **Example**
 
@@ -755,7 +755,7 @@ In this case `R` is `{y > 1}`, because in that case `{z >= 1} y = z+1; {y > 1} `
 
 ###### `If`-*statement*
 
-You have to verify that the postcondition is true whatever if-block the program execute. More fromally we have the following: the hoare triple`{P} if b S1 else S2 {Q}` is valid iff.:
+You have to verify that the postcondition is true whatever if-block the program execute. More formally we have the following: the hoare triple`{P} if b S1 else S2 {Q}` is valid iff.:
 
 1. `{P && b} S1 {Q1}` is valid **and**
 2. `{P && !b} S2 {Q2}`  is valid **and**
@@ -771,12 +771,12 @@ else { y = 20; }
 ```
 
 - Let `Q1` be `{y > 7}`, and `Q2` be `{y == 20}` (also other statements can work here).
-- With the assignement rules we can say that
+- With the assignment rules we can say that
   - `{true && x > 7} y = x; {y > 7}` is valid and
   - `{true && x <= 7} y = 20; {y == 20}` is valid
 - Furthermore, `(y>7 || y==20)` $\implies$ ` y>5`
 
-Hence the riple is valid.
+Hence the triple is valid.
 
 ###### Weakest precondition (*"Schwächste" Vorbedingung*)
 
@@ -787,7 +787,7 @@ The goal is to find the weakest precondition (`wp(S1;S2;...,Q)`) and the stronge
 
 ###### Find `wp(S1;S2;...,Q)`
 
-To find `wp(S1;S2;...,Q)` you have to start from `Q` and go backward to `S1`. In case there's an `if`-*statement*  you have to do a cas distinction; you have that`wp(if b S1 else S2, Q)` is`(b && wp(S1,Q)) || (!b && wp(S2,Q))`
+To find `wp(S1;S2;...,Q)` you have to start from `Q` and go backward to `S1`. In case there's an `if`-*statement*  you have to do a case distinction; you have that`wp(if b S1 else S2, Q)` is`(b && wp(S1,Q)) || (!b && wp(S2,Q))`
 
 
 
@@ -807,19 +807,19 @@ For loops you can use the invariant , which, always holds, not matter how many t
 
 ###### In loops
 
-To prove that a program terminates, you usually show that by assigning a positive integer number to the loop state (after ending each iteration), so that at each step the number decrease. By showing that this number reaches 0 when the loop condition is false, you prove that the loop has a finite number of cycles that pring the number to 0.
+To prove that a program terminates, you usually show that by assigning a positive integer number to the loop state (after ending each iteration), so that at each step the number decrease. By showing that this number reaches 0 when the loop condition is false, you prove that the loop has a finite number of cycles that bring the number to 0.
 
 **Example**
 
 You can show that a loop that goes through every element of a `LinkedList` terminates by stating that the size of the uncovered list becomes smaller at each iteration, hence it will get to 0, therefore the loop terminates.
 
-###### In una ricorsione
+###### In a recursion
 
 You can show that a recursion terminates in a inductive way:
 
 1. Show that the base case is correctly handled
-2. Show that each recursive call work on a problem which is strictly smaller then the current probelm
-3. Showro that, assuming each recursive call correctly solves the subproblem, this method correctly solve the current problem ("induction step")
+2. Show that each recursive call work on a problem which is strictly smaller then the current problem
+3. Show that, assuming each recursive call correctly solves the subproblem, this method correctly solve the current problem ("induction step")
 
 ##### Liskov substitution principle
 
