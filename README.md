@@ -4,7 +4,7 @@
 
 In order to benefit from the custom css you have to:
 
-1. Create the new file `base.user.css` folder into the `themes` folder from Typora (if not already present). [Here](https://support.typora.io/Add-Custom-CSS/#open-theme-folder) are the instruction to find this folder.
+1. Create the new file `base.user.css` folder into the Typora's `themes` folder (if not already present). [Here](https://support.typora.io/Add-Custom-CSS/#open-theme-folder) are the instruction to find this folder.
 
 2. Open the file.
 
