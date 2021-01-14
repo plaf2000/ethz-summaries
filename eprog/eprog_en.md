@@ -1,4 +1,4 @@
-**Paolo Laffranchi, Bubble 3, January 20201** 
+**Paolo Laffranchi, Bubble 3, January 2021** 
 
 # Einführung in die Programmierung
 
