@@ -1,3 +1,5 @@
+**Paolo Laffranchi, Bubble 3, January 20201** 
+
 # Einführung in die Programmierung
 
 [TOC]
@@ -243,7 +245,7 @@ It is used to define how to convert an object into a string. The default impleme
 
 ##### Objects construction and initialization
 
-A constructor has the following structure (<img class="att"> the output type doesn't have to be specified!):
+A constructor has the following structure (<img class="att"> the output type must not be specified!):
 
 ```java
 class Foo {
@@ -278,9 +280,9 @@ public class Point {
 
 The `static` methods don't refer to an object, but to the class instead. For example: `Class.method()` for a `static method`. 
 
-They are mainly used to avoid redundancy between different classes (without redefine them).
+They are mainly used to avoid redundancy between different classes (so that there's no need to redefine them).
 
-##### `static` variables
+##### <img class="att"> `static` variables
 
 They work in a similar way as the methods, but **you have to be careful**.
 
@@ -313,7 +315,7 @@ Some exceptions must be "caught" from the program, because the Java system is no
 
 The exceptions that are recognized and handled by the system are called ***checked Exception***, the others are ***unchecked Exception***.
 
-It is possible to declare that an exception can happen inside a method, by *keyword* `throws`  after declaring the method:
+It is possible to declare that an exception can happen inside a method, by using the keyword `throws`  after declaring the method:
 
 ```java
 public static void foo(...) throws type
@@ -321,9 +323,9 @@ public static void foo(...) throws type
 
 #### Input/Output
 
-`Scanner` has two exceptions: `NoSuchElementException` e `InputMismatchException`.
+`Scanner` has two exceptions: `NoSuchElementException` and `InputMismatchException`.
 
-You can use`.hasNext[Type]()` to verify if there's an element right after the cursor.
+You can use `.hasNext[Type]()` to verify if there's an element right after the cursor.
 
 The scanner can also be used with a string as parameter. This can be very useful to read each line (using  `.nextLine()`) from a text file, for example:
 
@@ -346,7 +348,7 @@ PrintStream output = new PrintStream(file);
 output.print("Hello world!");
 ```
 
-<img class="att"> **Warning:**
+<img class="att"> **Warnings**
 
 1.  If the file already exists, it gets overwritten.
 
@@ -369,7 +371,7 @@ output.print("Hello world!");
 
 #### How variables get saved  
 
-- the ***static data*** contains the informations for the Java virtual machine (not relevant for the programmer and have nothing to do with the *keyword* `static`)
+- the ***static data*** contains the informations for the Java virtual machine (they're not relevant for the programmer and they have nothing to do with the keyword `static`)
 - the ***heap*** contains the objects that gets created by the `new` operator
 - the ***stack*** contains the variables used inside methods (for example parameters).
 
@@ -397,7 +399,7 @@ If there are areas of the *heap* that don't get pointed by the stack, the *garba
 
 If we make an analogy between class and file, the package represents the folder.
 
-For example a clas `D` from package  `a.b.c` must be saved in the file `a/b/c/D.java`.
+For example a class `D` from package  `a.b.c` must be saved in the file `a/b/c/D.java`.
 
 If no package is specified, Java automatically inserts the program inside the *default* package, from which classes can't get imported and can't be used in other packages.
 
@@ -405,7 +407,7 @@ In this lectures we ony use the default package.
 
 ##### *Default* (visibility)
 
-By using the `default` *keyword* , the package is only visible inside the class and all the other classes inside the same package. A variable gets put in the default package if you don't write anything before its declaration. For example:
+By using the `default` keyword , the package is only visible inside the class and all the other classes inside the same package. A variable gets put in the default package if you don't write anything before its declaration. For example:
 
 ```java
 package pacman.model;
@@ -432,17 +434,17 @@ public class Inner2 {
 
 ####  Inheritance (*Vererbung*) 
 
-The keyword`super` can be used to point to the parent class, for example `super.getSalary()` inside `Administrator extends Angestellte` calls`Angestellte.getSalary()`.
+The keyword`super` can be used to point to the parent class, for example `super.getSalary()` inside `Administrator extends Angestellte` calls `Angestellte.getSalary()`.
 
 ##### Constructors
 
-When you define a constructor inside the *superclass*, you have also to define it for the *subclasses*. <img class="att"> **The *subclasses* don't inherit constructors**.
+When you define a constructor inside the superclass, you have also to define it for the subclasses. <img class="att"> **The subclasses don't inherit constructors**.
 
 The superclass constructor, can be called using `super(...)`.
 
-<img class="att"/> `private` from *superclasses* **can't** be read from the *subclasses*! In order to access them, you have to use an accessor and access to them with `super.get...()` (or use the `protected` attribute instead, discussed later).
+<img class="att"/> `private` from superclasses **can't** be read from the *subclasses*! In order to access them, you have to use an accessor and access to them with `super.get...()` (or use the `protected` attribute instead, discussed later).
 
-##### Selective (object) behavior *(Selektiv Verhalten von Objekten)*
+##### Selective (objects') behavior *(Selektiv Verhalten von Objekten)*
 
 the *override* can be used to change the behavior of a method that is used inside another method of the subclass. For example:
 
@@ -527,7 +529,7 @@ A programm is written in a way that allows to use it with different types of obj
 
 ##### Class visibility
 
-If you insert the  `public` keyword before `class`, the class must be in a file with the same name as the class. If this keyword is not inserted, the visibility will be default, hence only inside the same package.
+If you insert the `public` keyword before `class`, the class must be in a file with the same name as the class. If this keyword is not inserted, the visibility will be default, hence only inside the same package.
 
 ##### Dynamic binding (*dynamische Bindung* )
 
@@ -567,13 +569,13 @@ class R extends S {
 
 If you define `T r = new R()`, when you call `r.s2()` you obtain `R`, because `s2()` will be executed as defined inside `S` class, and  `p()` as defined in `R` class. **Please note** that `r.p()` can't be called, because `p()` is not defined in `T`.
 
-<img class="att"/> If the two methods `p()` are `private`,  then the result would be **`S` and not `R`**! This is because `p()` of `R` is not visible by `S`.
+<img class="att"/> If the two methods `p()`are `private`,  then the result would be **`S` and not `R`**! This is because `p()` of `R` is not visible by `S`.
 
 To override a method, the new method must be equal or less restrictive (in terms of visibility) then the method of the superclass, otherwise you'll get an error.
 
 ##### *Shadowing*
 
-Unlike methods, variables sometimes don't get overridden. Normally a method takes the variables as defined inside the class. The use of variables with same names inside subclasses is discouraged. Here's an example:
+Unlike methods, variables sometimes don't get overridden. Usually a method takes the variables as defined inside the class. The use of variables with same names inside subclasses is discouraged. Here's an example:
 
 ```java
 class X {
@@ -596,27 +598,13 @@ class Y extends X {
 }
 
 Y yref = new Y();
-yref.s; 					// da "in Y"
-yref.myS(); 				// da "in Y"
-yref.myS1(); 				// da "in X"
-((X) yref).myS(); 			// da "in Y"
-((X) yref).s; 				// da "in X"
+yref.s; 					// returns "in Y"
+yref.myS(); 				// returns "in Y"
+yref.myS1(); 				// returns "in X"
+((X) yref).myS(); 			// returns "in Y"
+((X) yref).s; 				// returns "in X"
 
 ```
-
-#### *Interfaces*
-
-The problem about inheritance (`extends`) is that each subclass can have at most one superclass.
-
-We use *interfaces* to solve this problem. Unlike inheritance, they represent similar behaviors between classes (same methods).
-
-<img class="att"> When a method gets implemented, it **must** be with **public** visibility!
-
-If a class doesn't implement every method declared in the interface, Java will raise an error. But if you want to implement just some methods, than you can define the class as `abstract` (`public abstract class ...`).
-
-When you use the `abstract` keyword, you can't create new object using the keyword `new`, the abstract class must be implemented in another class.
-
-It is also possible to extend interfaces with other interfaces (inherit interfaces).
 
 ##### *Overloading*
 
@@ -650,6 +638,20 @@ b.foo(x); //foo 0 B
 c.foo(x); //foo 0 B!! Since foo() in C takes a Y variable as parameter, it can't take x (explicit cast is needed), therefore foo() gets executed from class B, which takes an X variable as parameter.
 ```
 
+#### *Interfaces*
+
+The problem about inheritance (`extends`) is that each subclass can have at most one superclass.
+
+We use *interfaces* to solve this problem. Unlike inheritance, they represent similar behaviors between classes (same methods).
+
+<img class="att"> When a method gets implemented, it **must** be with **public** visibility!
+
+If a class doesn't implement every method declared in the interface, Java will raise an error. But if you want to implement just some methods, than you can define the class as `abstract` (`public abstract class ...`).
+
+When you use the `abstract` keyword, you can't create new object using the keyword `new`, the abstract class must be implemented in another class.
+
+It is also possible to extend interfaces with other interfaces (inherit interfaces).
+
 #### *Exceptions*
 
 <img class="att"> **Pay attention** to the `catch` blocks' order.. The one about the more restrictive exception must come before and the less restrictive at the end.
@@ -670,9 +672,9 @@ A new object of `Integer`  type can be crated using the method  `valueOf(int num
 
 <img src="./img/image-20210105181102914.png" alt="image-20210105181102914" style="zoom:67%;" />
 
-To order a *collection* you can use the method `sort()` from the  `Collections` class (in which there are other useful methods to handle the collections). This method can be used iff.  the `compareTo()` method from the `Comparable` interface is defined inside the class of the collection type. I.e. a `Collection<E>` must implement `Comparable`, by defining the `compareTo(E other)` method. In this way it will be possible to use `Collection.sort()`.
+To order a collection you can use the method `sort()` from the  `Collections` class (in which there are other useful methods to handle the collections). This method can be used only if the `compareTo()` method from the `Comparable` interface is defined inside the class of the collection type. I.e. a `Collection<E>` must implement `Comparable`, by defining the `compareTo(E other)` method. In this way it will be possible to use `Collection.sort()`.
 
-Sometime when implementing the `compareTo()` method it is useful make a subtraction between the two values, but you have to be careful when working with`double` types variables, in this case it is better to use`Math.signum(double)`.
+Sometime when implementing the `compareTo()` method it is useful make a subtraction between the two values, but you have to be careful when working with`double` types variables, in this case it is better to use `Math.signum(double)`.
 
 `compareTo()` is consistent (*konsistent*) if $\forall$ `a`, `b`: `((a.compareTo(b)==0)==(b.compareTo(a)==0))`. It is recommended to have it consistent.
 
@@ -692,7 +694,7 @@ Pros and cons between the different implementation:
 
 ##### `Iterator`
 
-With a *foreach* cycle, of the form `for(E e : set){}` each `e` value is *read-only*, hence you're not allowed to delet the element in the set. to solve this problem you can use the iterators. The `Iterator` interface contains three methods:
+With a *foreach* cycle, of the form `for(E e : set){}` each `e` value is *read-only*, hence you're not allowed to delete the element in the set. to solve this problem you can use the iterators. The `Iterator` interface contains three methods:
 
 <img src="./img/image-20210106001624228.png" alt="image-20210106001624228" style="zoom: 67%;" />
 
@@ -714,11 +716,13 @@ System.out.println(scores); // [72, 87, 94]
 
 #### Systematic programming
 
-You write a *postcondition*  iff. you're sure that the program can reach that point (if there aren't any exceptions before).
+You write a *postcondition* only if you're sure that the program can reach that point (if there aren't any exceptions before).
 
 ##### *Hoare triple* (*Hoare Tripel*)
 
-A *hoare triple* is made of a *precondition* `P`, a *statement* (*Anweisung[en]*) `S`, and a *postcondition* `Q`: `{P} S {Q}`. The triple is valid iff.: `P` is valid before the execution of `S` $\implies$ `Q` is valid after the execution of `S`.
+A *hoare triple* is made of a *precondition* `P`, a *statement(s)* (*Anweisung[en]*) `S`, and a *postcondition* `Q`: `{P} S {Q}`. The triple is valid iff.:
+
+​	`P` is valid before the execution of `S` $\implies$ `Q` is valid after the execution of `S`.
 
 ###### Assignment (*Zuweisung*)
 
@@ -738,8 +742,8 @@ In this case `Q'` is `{z*z != z}`, we can show that `P`  $\not\!\!\!\!\implies$`
 
 To verify the hoare triple `{P} S1;S2 {Q}`, you have to verify if there's a statement `R` such that:
 
-1. `{P} S1 {R} is valid **and**
-2. `{R} S2 {Q} is valid
+1. `{P} S1 {R}` is valid **and**
+2. `{R} S2 {Q}` is valid
 
 **Example**
 
@@ -755,7 +759,7 @@ In this case `R` is `{y > 1}`, because in that case `{z >= 1} y = z+1; {y > 1} `
 
 ###### `If`-*statement*
 
-You have to verify that the postcondition is true whatever if-block the program execute. More formally we have the following: the hoare triple`{P} if b S1 else S2 {Q}` is valid iff.:
+You have to verify that the postcondition is true whatever if-block the program execute. More formally we have that the hoare triple `{P} if b S1 else S2 {Q}` is valid iff.:
 
 1. `{P && b} S1 {Q1}` is valid **and**
 2. `{P && !b} S2 {Q2}`  is valid **and**
@@ -787,7 +791,7 @@ The goal is to find the weakest precondition (`wp(S1;S2;...,Q)`) and the stronge
 
 ###### Find `wp(S1;S2;...,Q)`
 
-To find `wp(S1;S2;...,Q)` you have to start from `Q` and go backward to `S1`. In case there's an `if`-*statement*  you have to do a case distinction; you have that`wp(if b S1 else S2, Q)` is`(b && wp(S1,Q)) || (!b && wp(S2,Q))`
+To find `wp(S1;S2;...,Q)` you have to start from `Q` and go backward to `S1`. In case there's an if-statement  you have to do a case distinction; you have that `wp(if b S1 else S2, Q)` is `(b && wp(S1,Q)) || (!b && wp(S2,Q))`.
 
 
 
@@ -801,13 +805,13 @@ For loops you can use the invariant , which, always holds, not matter how many t
 
 1. `P` $\implies$ `I`  the invariant holds at the beginning (outside the loop)
 2. `{I && B} S {I}` After one loop iteration the invariant still holds
-3. `(I && !B)` $\implies$ `Q` The invariant and the fact that the loop condition (hence the loop ends) implies the postcondition `B`
+3. `(I && !B)` $\implies$ `Q` The invariant and the fact that the loop condition is false (hence the loop ends) implies the postcondition `B`
 
 ##### Termination (*Terminierung*)
 
 ###### In loops
 
-To prove that a program terminates, you usually show that by assigning a positive integer number to the loop state (after ending each iteration), so that at each step the number decrease. By showing that this number reaches 0 when the loop condition is false, you prove that the loop has a finite number of cycles that bring the number to 0.
+You usually show that  a program terminates by assigning a positive integer number to the loop state (after ending each iteration), so that at each step the number decrease. By showing that this number reaches 0 when the loop condition is false, you prove that the loop has a finite number of cycles that bring the number to 0.
 
 **Example**
 
