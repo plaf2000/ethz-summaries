@@ -33,7 +33,7 @@ There are two options
 - option 1: frame them
 - option 2: put between single quotes $\rightarrow$ "" to use the single quotes as a special character
 
-#### Equivalenza fra due regole
+#### Equivalence between two rules
 
 B~1~ and B~2~ are equivalent iff.:
 
@@ -42,9 +42,9 @@ B~1~ and B~2~ are equivalent iff.:
 
 #### Graphic representation
 
-| Option                                                       | Wiederholung                                                 | Auswahl                                                      |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `[A]`                                                        | `{A}`                                                        | `A | B | C | D `                                             |
+| Optional (*Option*)                    | Repetition (*Wiederholung*)                                  | **Alternation** (choice) (*Auswahl*)                         |
+| -------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `[A]`                                  | `{A}`                                                        | `A | B | C | D `                                             |
 | ![](./img/image-20210101190158661.png) | ![image-20210101190441918](./img/image-20210101190441918.png) | ![image-20210101190430696](./img/image-20210101190430696.png) |
 
 #### Recursion in *Ableitungsbaum*
