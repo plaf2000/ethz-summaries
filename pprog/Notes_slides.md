@@ -269,3 +269,224 @@ Scheduler is an algorithm for assigning tasks to processors
 - $T_p$ depends on scheduler
 - $\frac{T_1}{p}$ and $T_\infty$ are fixed
 
+a bound on how fast you can get on p processors
+with a greedy scheduler: $T_p\leq \frac{T_1}{p}+ T_\infty$
+
+### Work stealing scheduler
+
+Every processor has a queue of works. If a processor has no work, then it steals it from other processor (if available).
+
+Provably: $T_p=\frac{T_1}{P}+\mathcal{O}(T_\infty)$
+
+Empirically: $T_p=\frac{T_1}{P}+\mathcal{O}(T_\infty)$
+
+## ForkJoin Java Framework
+
+<img src="/home/plaf2000/.config/Typora/typora-user-images/image-20210618170903371.png" alt="image-20210618170903371" style="zoom:70%;" />
+
+<img src="/home/plaf2000/.config/Typora/typora-user-images/image-20210618171442631.png" alt="image-20210618171442631" style="zoom:70%;" />
+
+An implementation for summing up all the numbers in two arrays:
+
+```java
+class VecAdd extends RecursiveAction  {
+
+	public static final int SEQUENTIAL_THRESHOLD = 1;
+	private int lo, hi;
+	private int[] arr1, arr2, res;
+
+	VecAdd(int[] arr1, int[] arr2, int lo, int hi, int[] res) {
+		this.lo = lo;
+		this.hi = hi;
+		this.arr1 = arr1;
+		this.arr2 = arr2;
+		this.res = res;
+	 }
+
+	 public void compute() {
+			if (hi - lo <= SEQUENTIAL_THRESHOLD) {
+				for (int i = lo; i < hi; i++) {
+					res[i] = arr1[i] + arr2[i];
+				}
+			} 
+			else {
+				int mid = (lo + hi) / 2;
+				VecAdd left = new VecAdd(arr1, arr2, lo, mid, res);
+				VecAdd right = new VecAdd(arr1, arr2, mid, hi, res);
+				
+				left.fork();
+				right.compute();
+				left.join();
+                
+               	// ^ better version (instead of forking both left and right)
+			}
+		}
+}
+
+public class Main {
+
+	private static final ForkJoinPool fjPool = new ForkJoinPool();
+	
+	public static void main(String[] args) throws Exception {
+	  	  
+	  int[] myIntArray1 = new int[8];
+	  int[] myIntArray2 = new int[8];
+	  
+	  assert (myIntArray1.length == myIntArray2.length);
+	  
+	  int[] ans = new int[myIntArray1.length];
+	    
+	  for(int i=0; i<myIntArray1.length; i++)
+		  myIntArray1[i] = myIntArray2[i] = 1;
+	  
+	  fjPool.invoke(new VecAdd(myIntArray1, myIntArray2, 0, ans.length, ans));
+	  
+	  System.out.print("answer array: ");
+	  for(int i=0; i<ans.length; i++)
+		  System.out.print(ans[i] + " ");
+	}
+	
+}
+```
+
+### Getting good results in practice
+
+Sequential threshold
+
+- Library documentation recommends doing approximately 100-5000 basic operations in each “piece” of your algorithm
+
+Library needs to “warm up”
+
+- May see slow results before the Java virtual machine re-optimizes the library
+  internals
+- Put your computations in a loop to see the “long-term benefit”
+
+Wait until your computer has more processors :smile: 
+
+- Seriously, overhead may dominate at 4 processors, but parallel programming is likely to become much more important
+
+Beware memory-hierarchy issues
+
+- E.g. locality.
+
+### Managing state
+
+**Main challenge for parallel programs**
+
+Approaches:
+
+- immutability
+  - data do not change
+  - best option, should be used when possible
+- isolated mutability
+  - data can change, but only one thread/task can access them
+- mutable/shared data
+  - data can change / all tasks/threads can potentially access them
+
+## Mutual exclusion
+
+Mutual exclusion: One thread using a resource means another thread must wait
+
+- a.k.a. critical sections, which technically have other requirements
+
+## Re-entrant lock
+
+A re-entrant lock (a.k.a. recursive lock) 
+
+- “remembers” the thread (if any) that currently holds it
+- a count
+
+## Races
+
+Roughly: a **race condition** occurs when the computation result depends on the scheduling (how
+threads are interleaved)
+
+This lecture makes a big distinction between **data races and** bad **interleavings**, both kinds
+of race-condition bugs
+
+- Confusion often results from not distinguishing these or using the ambiguous “race condition” to
+  mean only one
+
+### The distinction
+
+**Data Race** [aka Low Level Race Condition, low semantic level]
+
+Erroneous program behavior caused by insufficiently synchronized accesses of a shared resource by multiple threads, e.g. Simultaneous read/write or write/write of the same memory location
+
+- (for mortals) always an error, due to compiler & HW
+- Original `peek` example has no data races
+
+**Bad Interleaving** [aka High Level Race Condition, high semantic level]
+
+Erroneous program behavior caused by an unfavorable execution order of a multithreaded algorithm that makes use of otherwise well synchronized resources.
+	“Bad” depends on your specification
+	Original `peek` had several
+
+## Interleavings
+
+Possible interleaving with k statements and 2 threads:
+$$
+\binom{2k}{k} = \mathcal{O}\binom{4^n}{\sqrt{2n}}
+$$
+
+### Memory reording
+
+**Rule of thumb**: Compiler and hardware allowed to make changes that do not affect the *semantics* of a ***sequentially*** executed program.
+
+## Memory model
+
+A memory model (e.g., of a programming language like Java) provides (often minimal) guarantees for the
+effects of memory operations.
+
+- leaving open optimization possibilities for hardware and compiler
+- but including guidelines for writing correct multithreaded programs
+
+### Program Order (PO)
+
+Program order is a total order of intra-thread actions
+
+- Program statements are NOT a total order across threads!
+
+Program order does not provide an ordering guarantee for memory accesses!
+
+- The only reason it exists is to provide the link between possible executions and the original program.
+
+Intra-thread consistency: Per thread, the PO order is consistent with the threads isolated execution
+
+### Synchronization Actions (SA)
+
+Synchronization actions are:
+
+- Read/write of a volatile variable
+- Lock monitor, unlock monitor
+- First/last action of a thread (synthetic)
+- Actions which start a thread
+- Actions which determine if a thread has terminated
+
+### Synchronization Actions form the Synchronization Order (SO)
+
+- SO is a total order
+- All threads see SA in the same order
+- SA within a thread are in PO
+- SO is consistent: all reads in SO see the last writes in SO
+
+### Synchronizes-With (SW)
+
+- SW only pairs the specific actions which "see" each other
+  - For example, two threads that read and write to the same volatile variable :arrow_down:
+- A volatile write to x synchronizes with subsequent read of x (subsequent in SO)
+
+### Happens-Before (HB) orders
+
+- The transitive closure of PO and SW forms HB
+- HB consistency: When reading a variable, we see either the last write (in HB) or any other unordered write.
+  - This means races are allowed!
+
+## Critical sections
+
+Pieces of code with the following conditions
+1. Mutual exclusion: statements from critical sections of two or more processes must not be interleaved
+2. Freedom from deadlock: if some processes are trying to enter a critical section then one of them must
+eventually succeed
+3. Freedom from starvation: if any process tries to enter its critical section, then that process must
+  eventually succeed
